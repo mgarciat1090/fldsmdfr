@@ -1,0 +1,26 @@
+{
+  "name": "fldsmdfr",
+  "version": "1.0.0",
+  "description": "hybrid fw for lightweight webapps",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psysonik/fldsmdfr.git"
+  },
+  "author": "mgarciat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/psysonik/fldsmdfr/issues"
+  },
+  "homepage": "https://github.com/psysonik/fldsmdfr#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13"
+  }
+}
