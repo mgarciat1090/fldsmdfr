@@ -6,7 +6,8 @@ var fl = window.fl || {};
 		//main init bootstrap function 
 		var boot = function(el,start){
 			var _el = fl.core.ds(el);
-			fl.core.init(start);
+			fl.core.init(start,_el);
+
 
 		}
 

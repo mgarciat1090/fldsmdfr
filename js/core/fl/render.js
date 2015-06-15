@@ -15,8 +15,10 @@ var fl = window.fl || {};
 		return this;
 	}
 
-	fl.core.prototype.init = function(msg){
-		this._el.innerHTML = msg;
+	fl.core.prototype.init = function(content,node){
+		var _loadView = new fl.baseView('js/templates/load.html');
+		_loadView.render(content,node);
+		return _loadView;
 	}
 
 	fl.core.prototype.ds = function(el){
@@ -71,9 +73,21 @@ var fl = window.fl || {};
 	*********************
 	**/
 
-	fl.baseView = function(){
-		var _el,_model;
+	fl.baseView = function(tmplUrl){
+		var _model,$el = this._el = document.createElement("div");
+		this.tmplUrl = tmplUrl;
+
+		this.successCallback = function(data){
+			$el.innerHTML = data;
+		}
+
+		fl.http.getRequest(this.tmplUrl,this.successCallback);
+
 	};
+
+	fl.baseView.prototype.render = function(content,$elem){
+		$elem.appendChild(this._el);
+	}
 
 
 	/**
@@ -83,7 +97,22 @@ var fl = window.fl || {};
 	**/
 
 	fl.http = function(){
-		var uri;
+		var url;
+	};
+
+
+	fl.http.getRequest = function(geturl,callback){
+		var successCallback = callback;
+		$.ajax({
+			url : geturl,
+			success : function(data){
+				//successCallback();
+				if(typeof successCallback !== 'undefined' && typeof successCallback === 'function'){
+					successCallback(data);	
+				}
+				
+			}
+		});
 	};
 
 
